@@ -159,7 +159,7 @@ if __name__ == "__main__":
     # Assumption: Starting at 570 70 07.3
     print("Call MoveTo (Kitchen Main)")
     move_to((525,440,97))
-    rospy.sleep(4)
+    rospy.sleep(3)
 
     print("Call SetRotation (Rotate to milk box)")
     set_rotation(0,0,180)
@@ -180,7 +180,7 @@ if __name__ == "__main__":
 
     print("Call MoveTo (Go to kitchen island)")
     move_to((570,440,97))
-    rospy.sleep(2.7)
+    rospy.sleep(2.0)
 
     print("Call SetRotation (Rotate to kitchen island 2)")
     set_rotation(0,0,0)
