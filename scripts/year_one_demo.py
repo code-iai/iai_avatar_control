@@ -199,15 +199,21 @@ if __name__ == "__main__":
     start_enablement("left_hand_rotation",(10,60,120))
     rospy.sleep(0.6)
 
+    print("Call Move Head")
+    move_head(-20,20)
+    rospy.sleep(0.2)
+
     print("Call SetInterpolationTarget (left hand ik)")
-    set_interpolation_target("left_hand_ik",(20,50,90))
-    rospy.sleep(3.5)
-
-
+    set_interpolation_target("left_hand_ik",(20,50,93))
+    rospy.sleep(3.2)
 
     print("Call Detach Object")
     send_command("detach_object")
     rospy.sleep(1.5)
+
+    print("Call Move Head")
+    move_head(0,0)
+    rospy.sleep(0.2)
 
     print("Call Stop Grasp")
     send_command("stop_grasp")
