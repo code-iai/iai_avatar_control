@@ -23,6 +23,23 @@ def send_command(comm):
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
 
+def send_console_command(comm):
+    print("Waiting for service")
+    service_name = '/avatar/send_console_command'
+
+    rospy.wait_for_service( service_name )
+    try:
+        send_console_command_service = rospy.ServiceProxy(service_name, Command)
+        req = CommandRequest()
+        req.command = comm
+
+        print("Sending service request")
+        resp1 = send_console_command_service(req)
+        print("Got service response")
+        return resp1
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
 def move_to(coords):
     print("Waiting for service")
     service_name = '/avatar/move_to'
