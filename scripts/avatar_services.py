@@ -4,7 +4,7 @@ import rospy
 import actionlib
 
 from iai_avatar_msgs.srv import *
-from iai_avatar_acts.msg import *
+from iai_avatar_msgs.msg import *
 
 def send_question(question):
 
