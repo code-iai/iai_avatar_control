@@ -1,10 +1,33 @@
 import math
 import sys
 import rospy
-from iai_avatar_msgs.srv import *
-#from iai_avatar_msgs.msg import *
-#from geometry_msgs.msg import Pose, Point, Quaternion
+import actionlib
 
+from iai_avatar_msgs.srv import *
+from iai_avatar_acts.msg import *
+
+def send_question(question):
+
+   pub = rospy.Publisher('Question/goal', QnAActionGoal, queue_size=10)
+   rate = rospy.Rate(5)
+
+   rate.sleep()
+
+   client = actionlib.SimpleActionClient('Question',QnAAction)
+
+   #print "Waiting for server"
+   #client.wait_for_server()
+
+   goal = QnAGoal()
+   goal.question = question
+
+   print "Sending Goal"
+   client.send_goal(goal)
+
+   print "Waiting for result"
+   client.wait_for_result()
+
+   return client.get_result()
 
 def send_command(comm):
     print("Waiting for service")
